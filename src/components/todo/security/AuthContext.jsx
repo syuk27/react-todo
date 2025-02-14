@@ -14,7 +14,6 @@ function AuthPovider({ children }) {
     const [number, setNumber] = useState(0);
 
     const [isAuthenticated, setAuthenticated] = useState(false);
-    
 
     return (
         <AuthContext.Provider value={ {number, isAuthenticated, setAuthenticated} }>
