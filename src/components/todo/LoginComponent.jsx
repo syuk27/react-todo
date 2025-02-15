@@ -5,8 +5,6 @@ import { useAuth } from "./security/AuthContext";
 export default function LoginComponent({ username, setUsername }) {
   const [password, setPassword] = useState("");
 
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const navigate = useNavigate();
@@ -49,7 +47,7 @@ export default function LoginComponent({ username, setUsername }) {
         <div>
           <label>Password</label>
           <input
-            type="Password"
+            type="password"
             name="password"
             value={password}
             onChange={passwordHandler}

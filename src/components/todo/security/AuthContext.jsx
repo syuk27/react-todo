@@ -9,7 +9,7 @@ export const useAuth = () => useContext(AuthContext);
 
 //Share the created context with other components
 
-function AuthPovider({ children }) {
+function AuthProvider({ children }) {
   const [number, setNumber] = useState(0);
 
   const [isAuthenticated, setAuthenticated] = useState(false);
@@ -37,4 +37,4 @@ function AuthPovider({ children }) {
   );
 }
 
-export default AuthPovider;
+export default AuthProvider;
