@@ -22,23 +22,15 @@ export default function LoginComponent({ username, setUsername }) {
   }
 
   function submitHandler() {
-    if (username === "syuk27" && password === "1234") {
-      authContext.setAuthenticated(true);
-      setShowSuccessMessage(true);
-      setShowErrorMessage(false);
+    if (authContext.login(username, password)) {
       navigate(`/welcome/${username}`);
     } else {
-      authContext.setAuthenticated(false);
       setShowErrorMessage(true);
-      setShowSuccessMessage(false);
     }
   }
 
   return (
     <div className="Login">
-      {showSuccessMessage && (
-        <div className="successMessage">Authenticated Successfully.</div>
-      )}
       {showErrorMessage && (
         <div className="errorMessage">
           Authenticated Failed. Please check your credentials.
