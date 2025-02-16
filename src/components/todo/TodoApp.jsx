@@ -1,15 +1,15 @@
+import PropTypes from "prop-types";
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
-import "./TodoApp.css";
-import LogoutComponent from "./LogoutComponent";
+import ErrorComponent from "./ErrorComponent";
 import FooterComponent from "./FooterComponent";
 import HeaderComponent from "./HeaderComponent";
 import ListTodosComponent from "./ListTodosComponent";
-import ErrorComponent from "./ErrorComponent";
-import WelcomeComponent from "./WelcomeComponent";
 import LoginComponent from "./LoginComponent";
+import LogoutComponent from "./LogoutComponent";
 import AuthProvider, { useAuth } from "./security/AuthContext";
-import { useState } from "react";
-import PropTypes from "prop-types";
+import "./TodoApp.css";
+import TodoComponent from "./TodoComponent";
+import WelcomeComponent from "./WelcomeComponent";
 
 function AuthenticatedRoute({ children }) {
   console.log("children", children);
@@ -22,23 +22,22 @@ function AuthenticatedRoute({ children }) {
 }
 
 export default function TodoApp() {
-  const [username, setUsername] = useState("");
-
   return (
     <div className="TodoApp">
       <AuthProvider>
         <BrowserRouter>
-          <HeaderComponent username={username} />
+          <HeaderComponent />
           <Routes>
             <Route
               path="/"
               element={
-                <LoginComponent username={username} setUsername={setUsername} />
+                <LoginComponent />
               }
             />
             <Route element={<AuthenticatedRoute />}>
               <Route path="/welcome/:username" element={<WelcomeComponent />} />
               <Route path="/todos" element={<ListTodosComponent />} />
+              <Route path="/todo/:id" element={<TodoComponent />} />
               <Route path="/logout" element={<LogoutComponent />} />
             </Route>
             <Route path="/*" element={<ErrorComponent />} />

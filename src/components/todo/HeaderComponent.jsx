@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "./security/AuthContext";
 
-export default function HeaderComponent({ username }) {
+export default function HeaderComponent() {
   // const authContext = useContext(AuthContext);
 
   const authContext = useAuth();
   const isAuthenticated = authContext.isAuthenticated;
+
+  const username = authContext.username;
 
   function logout() {
     authContext.logout();
